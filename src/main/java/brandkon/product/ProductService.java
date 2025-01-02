@@ -1,5 +1,6 @@
 package brandkon.product;
 
+import brandkon.brand.Brand;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,8 +45,12 @@ public class ProductService {
         if (brandId == null) {
             return categoryPopular(categoryId);
         }
-        else return brandPopluar(brandId);
-    }
+        if (categoryId == null) {
+            return brandPopluar(brandId);
+        }
+        else throw new IllegalArgumentException("[ERROR]");
+        }
+
 
     private List<ProductResponse> categoryPopular(Long categoryId) {
         List<Product> byBrandCategoryId = productRepository.findByBrandCategoryId(categoryId);
@@ -67,5 +72,19 @@ public class ProductService {
                 product.getPrice(),
                 product.getImageUrl()
         )).toList();
+    }
+
+    public detailProductResponse detailRead(Long productId) {
+        Product product = productRepository.findById(productId).orElseThrow();
+        return new detailProductResponse(
+                productId,
+                product.getProductName(),
+                product.getPrice(),
+                product.getExpirationDays(),
+                new Brand(
+                        product.getBrandName(),
+                        product.getImageUrl(),
+                        product.getGuidelines())
+                );
     }
 }

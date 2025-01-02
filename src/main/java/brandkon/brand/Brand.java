@@ -37,6 +37,10 @@ public class Brand {
         return imageUrl;
     }
 
+    public String getGuidelines() {
+        return guidelines;
+    }
+
     public Category getCategory() {
         return category;
     }

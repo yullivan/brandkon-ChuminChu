@@ -17,6 +17,7 @@ public class Product {
 
     @ManyToOne
     private Brand brand;
+    private String guidelines;
 
     public Product() {
     }
@@ -51,5 +52,13 @@ public class Product {
 
     public Brand getBrand() {
         return brand;
+    }
+
+    public int getExpirationDays() {
+        return expirationDays;
+    }
+
+    public String getGuidelines() {
+        return guidelines;
     }
 }
