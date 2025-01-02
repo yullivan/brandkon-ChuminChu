@@ -11,6 +11,7 @@ public class Brand {
     private Long id;
     private String name;
     private String imageUrl;
+    private String guidelines;
 
     @ManyToOne //하나의 카테고리에 여러개의 브랜드가 들어감
     private Category category;
@@ -18,9 +19,10 @@ public class Brand {
     public Brand() {
     }
 
-    public Brand(String name, String imageUrl) {
+    public Brand(String name, String imageUrl, String guidelines) {
         this.name = name;
         this.imageUrl = imageUrl;
+        this.guidelines = guidelines;
     }
 
     public Long getId() {
