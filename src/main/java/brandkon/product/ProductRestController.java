@@ -16,7 +16,7 @@ public class ProductRestController {
 
     @GetMapping("/products")
     public List<ProductResponse> productOfbrandRead(@RequestParam Long brandId){
-        return productService.productOfBrand(brandId);
+        return productService.read(brandId);
     }
 
 
