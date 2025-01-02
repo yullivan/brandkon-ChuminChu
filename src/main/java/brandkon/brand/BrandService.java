@@ -37,8 +37,17 @@ public class BrandService {
         )).toList();
     }*/
 
+    /* 1:n 관계
     public BrandResponse oneBrandRead(Long brandId) {
         Brand brand = brandRepository.findById(brandId).orElseThrow();
         return new BrandResponse(brandId, brand.getName(), brand.getImageUrl());
+    }*/
+
+    public BrandResponse oneBrandRead(Long brandId) {
+        BrandCategory brandCategory = brandCategoryRepository.findById(brandId).orElseThrow();
+        return new BrandResponse(
+                brandCategory.getBrand().getId(),
+                brandCategory.getBrand().getName(),
+                brandCategory.getBrand().getImageUrl());
     }
 }
