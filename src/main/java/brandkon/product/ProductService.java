@@ -13,6 +13,7 @@ public class ProductService {
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
+
     public List<ProductResponse> read(Long brandId) {
         if(brandId == null){
             return allProduct();
@@ -24,7 +25,7 @@ public class ProductService {
         List<Product> all = productRepository.findAll();
         return all.stream().map(product -> new ProductResponse(
                 product.getId(),
-                product.getBrandName(),
+                product.getBrand().getName(),
                 product.getProductName(),
                 product.getPrice(),
                 product.getImageUrl()
@@ -35,7 +36,7 @@ public class ProductService {
         List<Product> byBrandId = productRepository.findByBrandId(brandId);
         return byBrandId.stream().map(product -> new ProductResponse(
                 product.getId(),
-                product.getBrandName(),
+                product.getBrand().getName(),
                 product.getProductName(),
                 product.getPrice(),
                 product.getImageUrl())).toList();
@@ -56,7 +57,7 @@ public class ProductService {
         List<Product> byBrandCategoryId = productRepository.findByBrandCategoryId(categoryId);
         return byBrandCategoryId.stream().map(product -> new ProductResponse(
                 product.getId(),
-                product.getBrandName(),
+                product.getBrand().getName(),
                 product.getProductName(),
                 product.getPrice(),
                 product.getImageUrl()
@@ -67,7 +68,7 @@ public class ProductService {
         List<Product> byBrandId = productRepository.findByBrandId(brandId);
         return byBrandId.stream().map(product -> new ProductResponse(
                 product.getId(),
-                product.getBrandName(),
+                product.getBrand().getName(),
                 product.getProductName(),
                 product.getPrice(),
                 product.getImageUrl()
@@ -82,7 +83,7 @@ public class ProductService {
                 product.getPrice(),
                 product.getExpirationDays(),
                 new Brand(
-                        product.getBrandName(),
+                        product.getBrand().getName(),
                         product.getImageUrl(),
                         product.getGuidelines())
                 );
