@@ -13,10 +13,11 @@ public class Product {
     private int price;
     private String imageUrl;
     private int expirationDays;
+    private String guidelines;
 
     @ManyToOne
     private Brand brand;
-    private String guidelines;
+
 
     public Product() {
     }

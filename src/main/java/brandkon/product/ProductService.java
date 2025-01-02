@@ -86,6 +86,6 @@ public class ProductService {
                         product.getBrand().getName(),
                         product.getImageUrl(),
                         product.getGuidelines())
-                );
+        );
     }
 }
