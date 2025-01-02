@@ -15,4 +15,24 @@ public class BrandCategory {
 
     @ManyToOne
     private Category category;
+
+    public BrandCategory() {
+    }
+
+    public BrandCategory(Brand brand, Category category) {
+        this.brand = brand;
+        this.category = category;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
 }
