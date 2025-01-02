@@ -17,7 +17,7 @@ public class BrandController {
     }
 
     @GetMapping("/brands")
-    public List<BrandResponse> readBrands(@RequestParam String category){
+    public List<BrandResponse> readBrands(@RequestParam(required = false) String category){
         return brandService.read(category);
     }
 
