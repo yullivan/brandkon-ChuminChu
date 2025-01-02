@@ -20,9 +20,4 @@ public class CategoryRestController {
     public List<CategoryResponse> categoryRead(){
         return categoryService.readAll();
     }
-
-    @PostMapping("/categories")
-    public CategoryResponse createCategory(@RequestBody CategoryRequest categoryRequest){
-        return categoryService.create(categoryRequest);
-    }
 }

@@ -22,17 +22,4 @@ public class CategoryService {
                 category.getImageUrl()))
                 .toList();
     }
-
-    public CategoryResponse create(CategoryRequest categoryRequest) {
-        Category saveNewCategory = categoryRepository.save(
-                new Category(
-                        categoryRequest.name(),
-                        categoryRequest.slug(),
-                        categoryRequest.imageUrl()));
-        return new CategoryResponse(
-                saveNewCategory.getId(),
-                saveNewCategory.getName(),
-                saveNewCategory.getSlug(),
-                saveNewCategory.getImageUrl());
-    }
 }
