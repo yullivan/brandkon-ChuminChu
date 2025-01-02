@@ -19,5 +19,10 @@ public class ProductRestController {
         return productService.read(brandId);
     }
 
+    @GetMapping("/products/popular")
+    public List<ProductResponse> popularProduct(@RequestParam(required = false)Long categoryId, Long brandId){
+        return productService.popularRead(categoryId, brandId);
+    }
+
 
 }

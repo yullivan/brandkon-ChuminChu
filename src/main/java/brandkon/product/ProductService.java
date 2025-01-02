@@ -39,4 +39,33 @@ public class ProductService {
                 product.getPrice(),
                 product.getImageUrl())).toList();
     }
+
+    public List<ProductResponse> popularRead(Long categoryId, Long brandId) {
+        if (brandId == null) {
+            return categoryPopular(categoryId);
+        }
+        else return brandPopluar(brandId);
+    }
+
+    private List<ProductResponse> categoryPopular(Long categoryId) {
+        List<Product> byBrandCategoryId = productRepository.findByBrandCategoryId(categoryId);
+        return byBrandCategoryId.stream().map(product -> new ProductResponse(
+                product.getId(),
+                product.getBrandName(),
+                product.getProductName(),
+                product.getPrice(),
+                product.getImageUrl()
+        )).toList();
+    }
+
+    private List<ProductResponse> brandPopluar(Long brandId) {
+        List<Product> byBrandId = productRepository.findByBrandId(brandId);
+        return byBrandId.stream().map(product -> new ProductResponse(
+                product.getId(),
+                product.getBrandName(),
+                product.getProductName(),
+                product.getPrice(),
+                product.getImageUrl()
+        )).toList();
+    }
 }
