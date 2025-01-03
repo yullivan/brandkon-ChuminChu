@@ -10,4 +10,12 @@ public record detailProductResponse(
         Brand brand
 
 ) {
+
+    public record Brand(
+            Long id,
+            String name,
+            String guidelines
+    ){
+
+    }
 }

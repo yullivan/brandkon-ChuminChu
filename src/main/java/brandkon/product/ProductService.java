@@ -82,10 +82,10 @@ public class ProductService {
                 product.getProductName(),
                 product.getPrice(),
                 product.getExpirationDays(),
-                new Brand(
+                new detailProductResponse.Brand(
+                        product.getBrand().getId(),
                         product.getBrand().getName(),
-                        product.getImageUrl(),
-                        product.getGuidelines())
+                        product.getBrand().getGuidelines())
         );
     }
 }
