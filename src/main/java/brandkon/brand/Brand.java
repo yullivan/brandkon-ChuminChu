@@ -3,6 +3,8 @@ package brandkon.brand;
 import brandkon.category.Category;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Brand {
 
@@ -13,8 +15,8 @@ public class Brand {
     private String imageUrl;
     private String guidelines;
 
-    @ManyToOne //하나의 카테고리에 여러개의 브랜드가 들어감
-    private Category category;
+    @OneToMany(mappedBy = "brand")
+    private List<BrandCategory> brandCategory;
 
     public Brand() {
     }
@@ -41,7 +43,4 @@ public class Brand {
         return guidelines;
     }
 
-    public Category getCategory() {
-        return category;
-    }
 }

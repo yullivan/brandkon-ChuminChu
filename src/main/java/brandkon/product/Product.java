@@ -1,7 +1,10 @@
 package brandkon.product;
 
 import brandkon.brand.Brand;
+import brandkon.brand.BrandCategory;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Product {
@@ -13,11 +16,10 @@ public class Product {
     private int price;
     private String imageUrl;
     private int expirationDays;
-    private String guidelines;
+
 
     @ManyToOne
     private Brand brand;
-
 
     public Product() {
     }
@@ -49,12 +51,8 @@ public class Product {
     public Brand getBrand() {
         return brand;
     }
-
     public int getExpirationDays() {
         return expirationDays;
     }
 
-    public String getGuidelines() {
-        return guidelines;
-    }
 }

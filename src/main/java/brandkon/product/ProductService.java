@@ -1,6 +1,5 @@
 package brandkon.product;
 
-import brandkon.brand.Brand;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -54,7 +53,7 @@ public class ProductService {
 
 
     private List<ProductResponse> categoryPopular(Long categoryId) {
-        List<Product> byBrandCategoryId = productRepository.findByBrandCategoryId(categoryId);
+        List<Product> byBrandCategoryId = productRepository.findByCategoryId(categoryId);
         return byBrandCategoryId.stream().map(product -> new ProductResponse(
                 product.getId(),
                 product.getBrand().getName(),
