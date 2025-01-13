@@ -16,18 +16,18 @@ public class ProductRestController {
     }
 
     @GetMapping("/products")
-    public List<ProductResponse> productOfbrandRead(@RequestParam(required = false) Long brandId){
-        return productService.read(brandId);
+    public List<ProductResponse> readProducts(@RequestParam(required = false) Long brandId){
+        return productService.getProducts(brandId);
     }
 
     @GetMapping("/products/{productId}")
-    public detailProductResponse detailRead(@PathVariable Long productId){
+    public detailProductResponse readProduct(@PathVariable Long productId){
         return productService.detailRead(productId);
     }
 
     @GetMapping("/products/popular")
     public List<ProductResponse> popularProduct(@RequestParam(required = false)Long categoryId, Long brandId){
-        return productService.popularRead(categoryId, brandId);
+        return productService.readPopularProduct(categoryId, brandId);
     }
 
 

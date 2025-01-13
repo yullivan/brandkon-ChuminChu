@@ -13,7 +13,7 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public List<CategoryResponse> readAll() {
+    public List<CategoryResponse> findAll() {
         return categoryRepository.findAll()
                 .stream()
                 .map(category -> new CategoryResponse(

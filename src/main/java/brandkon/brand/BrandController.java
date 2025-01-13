@@ -18,11 +18,11 @@ public class BrandController {
 
     @GetMapping("/brands")
     public List<BrandResponse> readBrands(@RequestParam(required = false) String category){
-        return brandService.read(category);
+        return brandService.readBrands(category);
     }
 
     @GetMapping("/brands/{brandId}")
     public BrandResponse readBrand(@PathVariable Long brandId){
-        return brandService.oneBrandRead(brandId);
+        return brandService.readBrand(brandId);
     }
 }

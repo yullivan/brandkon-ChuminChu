@@ -17,7 +17,7 @@ public class BrandService {
     }
 
     // N:M관계일때
-    public List<BrandResponse> read(String category) {
+    public List<BrandResponse> readBrands(String category) {
         List<BrandCategory> byCategorySlug = brandCategoryRepository.findByCategorySlug(category);
         return byCategorySlug.stream().map(brandCategory ->
                 new BrandResponse(
@@ -44,7 +44,7 @@ public class BrandService {
         return new BrandResponse(brandId, brand.getName(), brand.getImageUrl());
     }*/
 
-    public BrandResponse oneBrandRead(Long brandId) {
+    public BrandResponse readBrand(Long brandId) {
         Brand brand = brandRepository.findById(brandId).orElseThrow(() ->
                 new NoSuchElementException("찾는 브랜드가 없습니다."));
         return new BrandResponse(

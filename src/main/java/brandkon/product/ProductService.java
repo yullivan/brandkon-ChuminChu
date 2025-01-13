@@ -14,14 +14,14 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<ProductResponse> read(Long brandId) {
+    public List<ProductResponse> getProducts(Long brandId) {
         if(brandId == null){
-            return allProduct();
+            return allProducts();
         }
-        else return productOfBrandRead(brandId);
+        else return getProduct(brandId);
     }
 
-    private List<ProductResponse> allProduct() {
+    private List<ProductResponse> allProducts() {
         List<Product> all = productRepository.findAll();
         return all.stream().map(product -> new ProductResponse(
                 product.getId(),
@@ -32,7 +32,7 @@ public class ProductService {
         )).toList();
     }
 
-    public List<ProductResponse> productOfBrandRead(Long brandId) {
+    public List<ProductResponse> getProduct(Long brandId) {
         List<Product> byBrandId = productRepository.findByBrandId(brandId);
         return byBrandId.stream().map(product -> new ProductResponse(
                 product.getId(),
@@ -42,18 +42,18 @@ public class ProductService {
                 product.getImageUrl())).toList();
     }
 
-    public List<ProductResponse> popularRead(Long categoryId, Long brandId) {
+    public List<ProductResponse> readPopularProduct(Long categoryId, Long brandId) {
         if (brandId == null) {
-            return categoryPopular(categoryId);
+            return readPopularCategory(categoryId);
         }
         if (categoryId == null) {
-            return brandPopluar(brandId);
+            return readPopularBrand(brandId);
         }
         else throw new IllegalArgumentException("[ERROR]");
         }
 
 
-    private List<ProductResponse> categoryPopular(Long categoryId) {
+    private List<ProductResponse> readPopularCategory(Long categoryId) {
         List<Product> byBrandCategoryId = productRepository.findByCategoryId(categoryId);
         return byBrandCategoryId.stream().map(product -> new ProductResponse(
                 product.getId(),
@@ -64,7 +64,7 @@ public class ProductService {
         )).toList();
     }
 
-    private List<ProductResponse> brandPopluar(Long brandId) {
+    private List<ProductResponse> readPopularBrand(Long brandId) {
         List<Product> byBrandId = productRepository.findByBrandId(brandId);
         return byBrandId.stream().map(product -> new ProductResponse(
                 product.getId(),
