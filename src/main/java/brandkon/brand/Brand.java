@@ -15,8 +15,8 @@ public class Brand {
     private String imageUrl;
     private String guidelines;
 
-    @OneToMany(mappedBy = "brand")
-    private List<BrandCategory> brandCategory;
+    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
+    private List<BrandCategory> brandCategories;
 
     public Brand() {
     }

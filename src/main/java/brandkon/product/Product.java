@@ -19,6 +19,7 @@ public class Product {
 
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Brand brand;
 
     public Product() {
