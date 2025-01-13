@@ -3,6 +3,7 @@ package brandkon.brand;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class BrandService {
@@ -44,10 +45,11 @@ public class BrandService {
     }*/
 
     public BrandResponse oneBrandRead(Long brandId) {
-        BrandCategory brandCategory = brandCategoryRepository.findById(brandId).orElseThrow();
+        Brand brand = brandRepository.findById(brandId).orElseThrow(() ->
+                new NoSuchElementException("찾는 브랜드가 없습니다."));
         return new BrandResponse(
-                brandCategory.getBrand().getId(),
-                brandCategory.getBrand().getName(),
-                brandCategory.getBrand().getImageUrl());
+                brandId,
+                brand.getName(),
+                brand.getImageUrl());
     }
 }

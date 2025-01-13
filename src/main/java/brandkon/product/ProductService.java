@@ -3,6 +3,7 @@ package brandkon.product;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class ProductService {
@@ -75,7 +76,8 @@ public class ProductService {
     }
 
     public detailProductResponse detailRead(Long productId) {
-        Product product = productRepository.findById(productId).orElseThrow();
+        Product product = productRepository.findById(productId).orElseThrow(()->
+                new NoSuchElementException("찾는 상품이 없습니다."));
         return new detailProductResponse(
                 productId,
                 product.getProductName(),

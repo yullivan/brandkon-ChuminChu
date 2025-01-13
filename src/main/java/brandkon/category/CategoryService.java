@@ -14,12 +14,13 @@ public class CategoryService {
     }
 
     public List<CategoryResponse> readAll() {
-        List<Category> allCategory = categoryRepository.findAll();
-        return allCategory.stream().map(category -> new CategoryResponse(
-                category.getId(),
-                category.getName(),
-                category.getSlug(),
-                category.getImageUrl()))
+        return categoryRepository.findAll()
+                .stream()
+                .map(category -> new CategoryResponse(
+                        category.getId(),
+                        category.getName(),
+                        category.getSlug(),
+                        category.getImageUrl()))
                 .toList();
     }
 }
